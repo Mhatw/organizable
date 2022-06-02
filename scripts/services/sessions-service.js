@@ -20,12 +20,12 @@ export async function logout() {
   }
 }
 
-const credentialsModel = {
-  username: "mhatw",
-  password: "asdfasdf",
-};
+// const credentialsModel = {
+//   username: "mhatw",
+//   password: "asdfasdf",
+// };
 
-login(credentialsModel);
+// login(credentialsModel);
 
-const button = document.querySelector("button");
-button.addEventListener("click", logout);
+// const button = document.querySelector("button");
+// button.addEventListener("click", logout);
