@@ -12,9 +12,7 @@ export async function login(credentials = { username, password }) {
 
 export async function logout() {
   try {
-    // falta arreglar esto
-    // const data = await apiFetch("logout", { method: "DELETE" });
-    alert("fue pe");
+    const data = await apiFetch("logout", { method: "POST" });
     sessionStorage.removeItem(tokenKey);
     return data;
   } catch (error) {
@@ -28,3 +26,6 @@ const credentialsModel = {
 };
 
 login(credentialsModel);
+
+const button = document.querySelector("button");
+button.addEventListener("click", logout);
