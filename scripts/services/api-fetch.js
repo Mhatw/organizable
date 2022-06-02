@@ -32,8 +32,10 @@ export default async function apiFetch(
     try {
       data = await response.json();
     } catch (error) {
+      // console.log(error);
       throw new Error(response.statusText);
     }
+    console.log(data);
     throw new Error(data.relation || data.number || data.errors);
   }
   // logout
