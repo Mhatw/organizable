@@ -24,9 +24,9 @@ export default async function apiFetch(
     headers,
     body: body ? JSON.stringify(body) : null,
   };
-  console.log(config);
+  console.log(`${BASE_URI}/${endpoint}`, config);
   const response = await fetch(`${BASE_URI}/${endpoint}`, config);
-  console.log(response);
+
   let data;
   if (!response.ok) {
     try {
@@ -35,8 +35,9 @@ export default async function apiFetch(
       // console.log(error);
       throw new Error(response.statusText);
     }
-    console.log(data);
-    throw new Error(data.relation || data.number || data.errors);
+    throw new Error(
+      data.relation || data.number || data.password || data.errors
+    );
   }
   // logout
   try {
