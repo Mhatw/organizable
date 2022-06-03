@@ -20,3 +20,12 @@ export async function updateList(boardId, listId, list = { name }) {
   console.log(updatedList);
   return updatedList;
 }
+
+// function for destroy a list
+export async function destroyList(boardId, listId) {
+  const deletedList = await apiFetch(`boards/${boardId}/lists/${listId}`, {
+    method: "DELETE",
+  });
+  console.log(deletedList);
+  return deletedList;
+}
