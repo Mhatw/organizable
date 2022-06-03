@@ -14,4 +14,12 @@ export async function showBoard(id) {
   return board;
 }
 
+// function for create a new board
+export async function createBoard(
+  board = { name, color, starred, closed, createdAt }
+) {
+  const newBoard = await apiFetch("boards", { body: board });
+  console.log(newBoard);
+  return newBoard;
+}
 
