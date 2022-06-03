@@ -31,3 +31,12 @@ export async function updateCard(
   console.log(updatedCard);
   return updatedCard;
 }
+
+// function for destroy a card
+export async function destroyCard(listId, cardId) {
+  const deletedCard = await apiFetch(`lists/${listId}/cards/${cardId}`, {
+    method: "DELETE",
+  });
+  console.log(deletedCard);
+  return deletedCard;
+}
