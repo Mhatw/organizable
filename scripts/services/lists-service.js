@@ -29,3 +29,15 @@ export async function destroyList(boardId, listId) {
   console.log(deletedList);
   return deletedList;
 }
+
+// function for sort a list
+export async function sortList(boardId) {
+  const board = await showBoard(boardId);
+  const listsIds = board.lists.map((list) => list.listId);
+  const sortedList = await apiFetch(`boards/${boardId}/lists/sort`, {
+    method: "POST",
+    body: { ids: listsIds },
+  });
+  console.log(sortedList);
+  return sortedList;
+}
