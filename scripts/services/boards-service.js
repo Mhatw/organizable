@@ -4,8 +4,9 @@ import { login } from "./sessions-service.js";
 
 // function for index all boards of a user
 export async function indexBoards() {
-  console.log(await apiFetch("boards"));
-  return await apiFetch("boards");
+  const boards = await apiFetch("boards");
+  console.log(boards);
+  return boards;
 }
 // function for show an expecified board
 export async function showBoard(id) {
