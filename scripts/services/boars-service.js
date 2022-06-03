@@ -23,3 +23,16 @@ export async function createBoard(
   return newBoard;
 }
 
+// fuctions for update a board
+export async function updateBoard(
+  id,
+  board = { name, color, starred, closed }
+) {
+  const updatedBoard = await apiFetch(`boards/${id}`, {
+    method: "PATCH",
+    body: board,
+  });
+  console.log(updatedBoard);
+  return updatedBoard;
+}
+
