@@ -32,7 +32,6 @@ export default async function apiFetch(
     try {
       data = await response.json();
     } catch (error) {
-      // console.log(error);
       throw new Error(response.statusText);
     }
     throw new Error(

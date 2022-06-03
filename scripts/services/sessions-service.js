@@ -16,13 +16,3 @@ export async function logout() {
     console.log(error);
   }
 }
-
-// const credentialsModel = {
-//   username: "mhatw",
-//   password: "asdfasdf",
-// };
-
-// login(credentialsModel);
-
-// const button = document.querySelector("button");
-// button.addEventListener("click", logout);

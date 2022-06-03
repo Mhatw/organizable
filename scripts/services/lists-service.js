@@ -1,13 +1,9 @@
-import { tokenKey } from "../config.js";
 import apiFetch from "./api-fetch.js";
-import { createBoard, indexBoards, showBoard } from "./boards-service.js";
-import { login } from "./sessions-service.js";
-import { createUser } from "./users-service.js";
+import { showBoard } from "./boards-service.js";
 
 //  function for create a list
 export async function createList(boardId, list = { name }) {
   const newList = await apiFetch(`boards/${boardId}/lists`, { body: list });
-  console.log(newList);
   return newList;
 }
 
@@ -17,7 +13,6 @@ export async function updateList(boardId, listId, list = { name }) {
     method: "PATCH",
     body: list,
   });
-  console.log(updatedList);
   return updatedList;
 }
 
@@ -26,7 +21,6 @@ export async function destroyList(boardId, listId) {
   const deletedList = await apiFetch(`boards/${boardId}/lists/${listId}`, {
     method: "DELETE",
   });
-  console.log(deletedList);
   return deletedList;
 }
 
@@ -38,6 +32,5 @@ export async function sortLists(boardId) {
     method: "POST",
     body: { ids: listsIds },
   });
-  console.log(sortedList);
   return sortedList;
 }
