@@ -17,3 +17,17 @@ export async function showCard(listId, cardId) {
   console.log(card);
   return card;
 }
+
+// function for update a card
+export async function updateCard(
+  listId,
+  cardId,
+  card = { name, list_id, pos }
+) {
+  const updatedCard = await apiFetch(`lists/${listId}/cards/${cardId}`, {
+    method: "PATCH",
+    body: card,
+  });
+  console.log(updatedCard);
+  return updatedCard;
+}
