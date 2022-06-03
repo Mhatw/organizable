@@ -20,6 +20,9 @@ export async function updateUser(
   });
   return user;
 }
+export async function destroyUser(id) {
+  return await apiFetch(`users/${id}`, { method: "DELETE" });
+}
 
 // const credentialsModelLogin = {
 //   username: "mhatw1",
@@ -34,6 +37,7 @@ export async function updateUser(
 // };
 // const user2 = await createUser(credentialsModelLogin2);
 // const user = await login(credentialsModelLogin);
+// destroyUser(user.id);
 
 // const credentialsModel = {
 //   username: "mhatw22",
