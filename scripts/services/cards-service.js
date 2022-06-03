@@ -10,3 +10,10 @@ export async function createCard(listId, card = { name }) {
   console.log(newCard);
   return newCard;
 }
+
+// function for show a card
+export async function showCard(listId, cardId) {
+  const card = await apiFetch(`lists/${listId}/cards/${cardId}`);
+  console.log(card);
+  return card;
+}
