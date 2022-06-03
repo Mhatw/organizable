@@ -40,3 +40,17 @@ export async function destroyCard(listId, cardId) {
   console.log(deletedCard);
   return deletedCard;
 }
+
+// function for sort a card
+export async function sortCards(boardId, listId) {
+  const board = await showBoard(boardId);
+  const list = board.lists.find((list) => list.listId === listId);
+  const cardsIds = list.cards.map((card) => card.cardId);
+  console.log(cardsIds);
+  const sortedCards = await apiFetch(`lists/${listId}/cards/sort`, {
+    method: "POST",
+    body: { ids: cardsIds },
+  });
+  console.log(sortedCards);
+  return sortedCards;
+}

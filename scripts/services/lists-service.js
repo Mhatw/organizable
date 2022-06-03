@@ -31,7 +31,7 @@ export async function destroyList(boardId, listId) {
 }
 
 // function for sort a list
-export async function sortList(boardId) {
+export async function sortLists(boardId) {
   const board = await showBoard(boardId);
   const listsIds = board.lists.map((list) => list.listId);
   const sortedList = await apiFetch(`boards/${boardId}/lists/sort`, {
