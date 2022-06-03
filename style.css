@@ -1,0 +1,41 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import url(./css/form.css);
+@import url(./css/scrollbar.css);
+@import url(./css/session.css);
+
+body {
+  background-color: #fafafa;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  position: fixed;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* main */
+
+main {
+  position: relative;
+  background-color: #f3f5fc;
+  border: 1px solid red;
+  /* width: 100vw; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 2rem;
+  white-space: normal;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+@media (orientation: landscape) {
+  main {
+    height: 100%;
+  }
+}
