@@ -7,3 +7,11 @@ export async function indexBoards() {
   console.log(await apiFetch("boards"));
   return await apiFetch("boards");
 }
+// function for show an expecified board
+export async function showBoard(id) {
+  const board = await apiFetch(`boards/${id}`);
+  console.log(board);
+  return board;
+}
+
+
