@@ -10,6 +10,17 @@ export async function createUser(
   return user;
 }
 
+export async function updateUser(
+  id,
+  payload = { username, email, first_name, last_name }
+) {
+  const { token, ...user } = await apiFetch(`users/${id}`, {
+    method: "PATCH",
+    body: payload,
+  });
+  return user;
+}
+
 // const credentialsModelLogin = {
 //   username: "mhatw1",
 //   password: "asdfasdf",
