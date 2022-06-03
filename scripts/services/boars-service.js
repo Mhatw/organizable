@@ -36,3 +36,30 @@ export async function updateBoard(
   return updatedBoard;
 }
 
+// function for delete a board
+export async function destroyBoard(id) {
+  const deletedBoard = await apiFetch(`boards/${id}`, { method: "DELETE" });
+  console.log(deletedBoard);
+  return deletedBoard;
+}
+
+// const credentialsModelLogin = {
+//   username: "mhatw1",
+//   password: "asdfasdf",
+// };
+// const newBoard = {
+//   name: "New Board22",
+//   color: "magic blue2",
+//   starred: true,
+//   closed: false,
+//   createdAt: "2022-06-03T00:37:07.994Z",
+//   lists: [],
+// };
+// const user = await login(credentialsModelLogin);
+// indexBoards();
+// createBoard(newBoard);
+// showBoard(741);
+// console.log("==========================");
+// updateBoard(741, newBoard);
+// destroyBoard(742);
+// indexBoards();
