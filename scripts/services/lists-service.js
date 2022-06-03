@@ -10,3 +10,13 @@ export async function createList(boardId, list = { name }) {
   console.log(newList);
   return newList;
 }
+
+// function for update a list
+export async function updateList(boardId, listId, list = { name }) {
+  const updatedList = await apiFetch(`boards/${boardId}/lists/${listId}`, {
+    method: "PATCH",
+    body: list,
+  });
+  console.log(updatedList);
+  return updatedList;
+}
