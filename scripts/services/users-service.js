@@ -2,9 +2,9 @@ import { tokenKey } from "../config.js";
 import apiFetch from "./api-fetch.js";
 
 export async function createUser(
-  credentials = { username, email, first_name, last_name, password }
+  payload = { username, email, first_name, last_name, password }
 ) {
-  const { token, ...user } = await apiFetch("users", { body: credentials });
+  const { token, ...user } = await apiFetch("users", { body: payload });
   sessionStorage.setItem(tokenKey, token);
   return user;
 }
@@ -20,5 +20,6 @@ export async function updateUser(
   return user;
 }
 export async function destroyUser(id) {
-  return await apiFetch(`users/${id}`, { method: "DELETE" });
+  const userDestroyed = await apiFetch(`users/${id}`, { method: "DELETE" });
+  return userDestroyed;
 }
