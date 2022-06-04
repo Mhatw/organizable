@@ -1,3 +1,6 @@
+import DOMHandler from "../dom-handler.js";
+import { login } from "../services/sessions-service.js";
+import STORE from "../store.js";
 function renderLogin() {
   const { loginError } = LoginPage.state;
   return `
@@ -23,8 +26,14 @@ function renderLogin() {
                 <i class="fas fa-solid fa-key"></i>
               </span>
             </p>
+            
           </div>
-        </div>
+          </div>
+          ${
+            loginError
+              ? `<p class="tag is-danger is-light mx-6"> 😨 ${loginError}</p>`
+              : ""
+          }
         <!-- submit btn -->
         <div class="control">
           <button
@@ -47,12 +56,41 @@ function renderLogin() {
   `;
 }
 
+const $ = (selector) => document.querySelector(selector);
+function listenSubmitForm() {
+  const $form = $(".form");
+  $form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    $("#submit-btn").classList.toggle("is-loading");
+    try {
+      const username = $("input[type=text]").value;
+      const password = $("input[type=password]").value;
+      console.log(username, password);
+      const user = await login({ username: username, password: password });
+      STORE.user = user;
+      console.log(user);
+      setTimeout(function () {
+        // loadingPage();
+        setTimeout(async () => {
+          // await STORE.fetchContacts();
+          // DOMHandler.load(HomePage);
+        }, 500);
+      }, 500);
+    } catch (error) {
+      LoginPage.state.loginError = error.message;
+      setTimeout(function () {
+        DOMHandler.reload();
+      }, 1000);
+    }
+  });
+}
+
 const LoginPage = {
   toString() {
     return renderLogin();
   },
   addListeners() {
-    return;
+    listenSubmitForm();
   },
   state: {
     loginError: null,
