@@ -73,7 +73,7 @@ function listenSubmitForm() {
       setTimeout(function () {
         // loadingPage();
         setTimeout(async () => {
-          // await STORE.fetchContacts();
+          await STORE.fetchBoards();
           DOMHandler.load(HomePage);
         }, 500);
       }, 500);
