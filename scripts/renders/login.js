@@ -1,6 +1,7 @@
 import DOMHandler from "../dom-handler.js";
 import { login } from "../services/sessions-service.js";
 import STORE from "../store.js";
+import { HomePage } from "./home.js";
 function renderLogin() {
   const { loginError } = LoginPage.state;
   return `
@@ -73,7 +74,7 @@ function listenSubmitForm() {
         // loadingPage();
         setTimeout(async () => {
           // await STORE.fetchContacts();
-          // DOMHandler.load(HomePage);
+          DOMHandler.load(HomePage);
         }, 500);
       }, 500);
     } catch (error) {
