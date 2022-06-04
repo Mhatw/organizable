@@ -73,7 +73,13 @@
 .asideMyBoards:hover,
 .asideClosedBoards:hover,
 .asideMyProfile:hover {
-  background-color: #e1f4ff;
+  background-color: #e7e7e7;
+}
+.asideSelected {
+  background-color: #d4ebff;
+}
+.asideSelected {
+  background-color: #d4ebff;
 }
 
 .asideLogo {

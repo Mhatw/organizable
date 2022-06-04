@@ -34,7 +34,7 @@
   align-items: flex-start;
   gap: 1rem;
   margin: 2rem 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 /* cards */
 .boardCard {
@@ -51,14 +51,14 @@
 }
 .boardCardHeader {
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .boardCardHeader h4 {
   word-wrap: break-word;
 }
 .boardCardFooter {
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
