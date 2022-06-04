@@ -11,7 +11,7 @@ export function renderAside() {
             </li>
 
             <!-- my boards -->
-            <li class="asideMyBoards">
+            <li class="asideMyBoards ${selected ? "" : "asideSelected"}">
               <span class="icon-text">
                 <span class="icon">
                   <i class="fas fa-solid fa-border-all"></i>
@@ -21,7 +21,9 @@ export function renderAside() {
             </li>
 
             <!-- closed boards -->
-            <li class="asideClosedBoards">
+            <li class="asideClosedBoards ${
+              selected == "closed" ? "asideSelected" : ""
+            }">
               <span class="icon-text">
                 <span class="icon">
                   <i class="fas fa-solid fa-trash"></i>
@@ -31,7 +33,9 @@ export function renderAside() {
             </li>
 
             <!-- my profile -->
-            <li class="asideMyProfile">
+            <li class="asideMyProfile ${
+              selected == "profile" ? "asideSelected" : ""
+            }">
               <span class="icon-text">
                 <span class="icon">
                   <i class="fas fa-solid fa-id-badge"></i>
