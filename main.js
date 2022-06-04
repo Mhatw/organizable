@@ -1,1 +1,17 @@
-console.log("main.js");
+import { tokenKey } from "./scripts/config.js";
+import DOMHandler from "./scripts/dom-handler.js";
+async function init() {
+  try {
+    const token = sessionStorage.getItem(tokenKey);
+
+    if (!token) throw new Error();
+
+    await STORE.fetchContacts();
+    DOMHandler.load(LoginPage);
+  } catch (error) {
+    sessionStorage.removeItem(tokenKey);
+    DOMHandler.load(LoginPage);
+  }
+}
+
+init();
