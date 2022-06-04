@@ -1,0 +1,98 @@
+:root {
+  --shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+}
+.mainApp {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr;
+  grid-gap: 12px;
+  background: var(--signup-gradient);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 6s ease infinite;
+  -moz-animation: AnimationName 6s ease infinite;
+  animation: AnimationName 6s ease infinite;
+}
+@media screen and (max-width: 1216px) {
+  .mainApp {
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .mainApp {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+  }
+}
+.lateralBar {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin: 12px 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 0 1rem 0;
+  background-color: #f3f5f8;
+  border-radius: 0.8rem;
+  box-shadow: var(--shadow);
+}
+.lateralBar ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.lateralBar ul > div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.asideMyBoards,
+.asideClosedBoards,
+.asideMyProfile,
+.asideLogout {
+  width: 80%;
+  padding: 0.3rem 0.3rem 0.3rem 0.6rem;
+  font-weight: 400;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+.asideMyBoards:hover,
+.asideClosedBoards:hover,
+.asideMyProfile:hover {
+  background-color: #e1f4ff;
+}
+
+.asideLogo {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 0.8rem 0.8rem 0 0;
+  margin-bottom: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.asideLogout > span > span > i {
+  color: var(--signup-color);
+}
+.asideLogout:hover {
+  background-color: #ffe1e1;
+}
