@@ -1,4 +1,8 @@
-export function renderAside() {
+import DOMHandler from "../dom-handler.js";
+import { logout } from "../services/sessions-service.js";
+import LoginPage from "./login.js";
+// selected default myBoards, options: closed || profile
+export function renderAside(selected) {
   return `
   <aside class="lateralBar">
         <ul>
@@ -56,4 +60,11 @@ export function renderAside() {
         </ul>
       </aside>
   `;
+}
+
+export function listenLogout() {
+  document.querySelector(".asideLogout").addEventListener("click", () => {
+    logout();
+    DOMHandler.load(LoginPage);
+  });
 }
