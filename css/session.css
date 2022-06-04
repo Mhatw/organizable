@@ -1,6 +1,6 @@
 :root {
   --login-gradient: linear-gradient(270deg, #005c97, #363795);
-  --signup-gradient: linear-gradient(270deg, #7b4397, #dc2430);
+  --signup-gradient: linear-gradient(270deg, #9f3e95, #dc2430);
   --login-color: #005c97;
   --signup-color: #dc2430;
 }
@@ -29,6 +29,7 @@
   scrollbar-width: none;
 }
 .inputContainer {
+  padding: 0 1rem;
   white-space: normal;
   overflow: scroll;
   scrollbar-width: none;
