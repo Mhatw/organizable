@@ -31,12 +31,12 @@ export default async function apiFetch(
   if (!response.ok) {
     try {
       data = await response.json();
+      console.log("this", data);
     } catch (error) {
       throw new Error(response.statusText);
     }
-    throw new Error(
-      data.relation || data.number || data.password || data.errors
-    );
+    const error = Object.values(data)[0].message;
+    throw new Error(error);
   }
   // logout
   try {
@@ -44,6 +44,5 @@ export default async function apiFetch(
   } catch (error) {
     data = response.statusText;
   }
-
   return data;
 }
