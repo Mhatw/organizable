@@ -3,7 +3,7 @@
   height: 0;
 }
 
-*::-webkit-scrollbar {
+div::-webkit-scrollbar {
   width: 0.3125rem;
   height: 0.3125rem;
 }
