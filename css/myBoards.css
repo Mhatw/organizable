@@ -1,0 +1,73 @@
+.appBoards {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin: 12px 12px 12px 0;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.8rem;
+  box-shadow: var(--shadow);
+  padding: 3rem;
+  white-space: normal;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+/* my boards css */
+.myBoards h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  color: #000;
+}
+.appBoardsStarted > h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  /* margin: 0 0 1rem 0; */
+  color: rgb(89, 89, 89);
+}
+
+.boardContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 2rem 0;
+  border: 1px solid red;
+}
+/* cards */
+.boardCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  /* align-items: center; */
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 220px;
+  height: 100px;
+  margin: 0 !important;
+  background-color: bisque;
+}
+.boardCardHeader {
+  width: 100%;
+  border: 1px solid red;
+}
+.boardCardHeader h4 {
+  word-wrap: break-word;
+}
+.boardCardFooter {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.boardCardFooter span {
+  background-color: white;
+  border-radius: 100%;
+  padding: 0.3rem;
+}
+.boardCardFooter span > i {
+  transform: scale(0.8);
+}
