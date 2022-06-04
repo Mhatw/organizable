@@ -1,5 +1,6 @@
 import { tokenKey } from "./scripts/config.js";
 import DOMHandler from "./scripts/dom-handler.js";
+import LoginPage from "./scripts/renders/login.js";
 async function init() {
   try {
     const token = sessionStorage.getItem(tokenKey);
