@@ -1,8 +1,9 @@
 import DOMHandler from "../dom-handler.js";
-import { updateUser } from "../services/users-service.js";
+import { destroyUser, updateUser } from "../services/users-service.js";
 import STORE from "../store.js";
 import { asideRenderMyBoards, listenLogout, renderAside } from "./aside.js";
 import { HomePage } from "./home.js";
+import { goodbyeDeleteUser, successMsg } from "./loaders.js";
 
 function renderProfile() {
   return `
@@ -72,7 +73,7 @@ function renderProfile() {
           </button>
         </div>
         <!-- submit btn -->
-        <div class="control">
+        <div class="">
           <button
             class="button is-fullwidth is-danger is-light"
             id="delete-user-btn"
@@ -88,6 +89,16 @@ function renderProfile() {
 }
 
 const $ = (selector) => document.querySelector(selector);
+
+function loadUserData() {
+  const $form = $(".form");
+  console.log(STORE.user);
+  $form.username.value = STORE.user.username;
+  $form.email.value = STORE.user.email;
+  $form.firstName.value = STORE.user.firstName;
+  $form.lastName.value = STORE.user.lastName;
+}
+
 function updateMyProfile() {
   const $form = $(".form");
   $form.addEventListener("submit", async (event) => {
@@ -104,10 +115,12 @@ function updateMyProfile() {
       STORE.user = user;
       setTimeout(function () {
         // loadingPage();
+        successMsg;
+        $form.innerHTML = successMsg;
         setTimeout(async () => {
           // await STORE.fetchBoards();
-          DOMHandler.load(HomePage);
-        }, 500);
+          DOMHandler.load(ProfilePage);
+        }, 1000);
       }, 500);
     } catch (error) {
       ProfilePage.state.updateError = error.message;
@@ -117,13 +130,41 @@ function updateMyProfile() {
     }
   });
 }
+function deleteMyAccount() {
+  const $deleteBtn = $("#delete-user-btn");
+  $deleteBtn.addEventListener("click", async (event) => {
+    event.preventDefault();
+    if (confirm("Are you sure you want to delete your account?")) {
+      $deleteBtn.classList.toggle("is-loading");
+      try {
+        await destroyUser(STORE.user.id);
+        sessionStorage.removeItem("token");
+        setTimeout(function () {
+          $("body").innerHTML = goodbyeDeleteUser;
+          setTimeout(async () => {
+            window.location.reload();
+          }, 4000);
+        }, 500);
+      } catch (error) {
+        console.log("error", error);
+        setTimeout(function () {
+          $deleteBtn.classList.toggle("is-loading");
+        }, 1000);
+      }
+    }
+  });
+}
 
 export const ProfilePage = {
   toString() {
     return renderProfile();
   },
   addListeners() {
-    listenLogout(), updateMyProfile(), asideRenderMyBoards();
+    listenLogout(),
+      updateMyProfile(),
+      deleteMyAccount(),
+      asideRenderMyBoards(),
+      loadUserData();
   },
   state: {
     updateError: null,
