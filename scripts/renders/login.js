@@ -2,6 +2,7 @@ import DOMHandler from "../dom-handler.js";
 import { login } from "../services/sessions-service.js";
 import STORE from "../store.js";
 import { HomePage } from "./home.js";
+import SignupPage from "./signup.js";
 function renderLogin() {
   const { loginError } = LoginPage.state;
   return `
@@ -13,7 +14,7 @@ function renderLogin() {
           <!-- username -->
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="username" />
+              <input class="input" type="text" placeholder="username" required/>
               <span class="icon is-small is-left">
                 <i class="fas fa-solid fa-user"></i>
               </span>
@@ -22,7 +23,7 @@ function renderLogin() {
           <!-- password -->
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" placeholder="Password" />
+              <input class="input" type="password" placeholder="Password" required/>
               <span class="icon is-small is-left">
                 <i class="fas fa-solid fa-key"></i>
               </span>
@@ -85,13 +86,17 @@ function listenSubmitForm() {
     }
   });
 }
-
+function goToSignup() {
+  $("#signup-link").addEventListener("click", () => {
+    DOMHandler.load(SignupPage);
+  });
+}
 const LoginPage = {
   toString() {
     return renderLogin();
   },
   addListeners() {
-    listenSubmitForm();
+    listenSubmitForm(), goToSignup();
   },
   state: {
     loginError: null,
