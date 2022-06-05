@@ -1,6 +1,6 @@
 import DOMHandler from "../dom-handler.js";
 import STORE from "../store.js";
-import { listenLogout, renderAside } from "./aside.js";
+import { listenLogout, renderAside, asideRenderProfile } from "./aside.js";
 import { renderCard } from "./card.js";
 
 function renderHome() {
@@ -53,7 +53,7 @@ function renderBoards(type) {
 }
 
 function renderCards(type) {
-  let render = `<hr style="width:100%;background:#bababa;margin-top:-2rem">`;
+  let render = `<hr style="width:80%;background:#bababa;margin-top:-2rem">`;
   if (type == "fav") {
     if (STORE.hiddenStarted === true) {
       render = STORE.favorites
@@ -85,6 +85,6 @@ export const HomePage = {
   },
   addListeners() {
     // listenCreate()
-    listenLogout(), hiddenStartedBoards();
+    listenLogout(), hiddenStartedBoards(), asideRenderProfile();
   },
 };
