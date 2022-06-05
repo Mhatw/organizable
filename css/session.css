@@ -33,10 +33,11 @@
   white-space: normal;
   overflow: scroll;
   scrollbar-width: none;
+  height: auto;
 }
 @media (orientation: landscape) {
   .inputContainer {
-    min-height: 20vh;
+    min-height: 14vh;
   }
 }
 /* title form */

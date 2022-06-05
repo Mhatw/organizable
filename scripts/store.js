@@ -6,11 +6,16 @@ async function fetchBoards() {
   this.favorites = all_boards
     .filter((board) => board.starred === true)
     .reverse();
+  this.favorites = all_boards
+    .filter((board) => board.closed === true)
+    .reverse();
+  console.log(STORE);
 }
 let STORE = {
   user: null,
   boards: [],
   favorites: [],
+  closed: [],
   hiddenStarted: true,
   // currentContact: null,
   fetchBoards,
