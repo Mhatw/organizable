@@ -1,6 +1,7 @@
 import DOMHandler from "../dom-handler.js";
 import { logout } from "../services/sessions-service.js";
 import { HomePage } from "./home.js";
+import { goodbye } from "./loaders.js";
 import LoginPage from "./login.js";
 import { ProfilePage } from "./profile.js";
 // selected default myBoards, options: closed || profile
@@ -12,7 +13,7 @@ export function renderAside(selected) {
             <!-- logo -->
             <li class="asideLogo">
               <span class="icon-text">
-                <span>{ organizable }</span>
+                <span is-unselectable>{ organizable }</span>
               </span>
             </li>
 
@@ -63,6 +64,8 @@ export function renderAside(selected) {
       </aside>
   `;
 }
+
+const $ = (selector) => document.querySelector(selector);
 export function asideRenderMyBoards() {
   document.querySelector(".asideMyBoards").addEventListener("click", () => {
     DOMHandler.load(HomePage);
@@ -75,7 +78,14 @@ export function asideRenderProfile() {
 }
 export function listenLogout() {
   document.querySelector(".asideLogout").addEventListener("click", () => {
-    logout();
-    DOMHandler.load(LoginPage);
+    if (confirm("Are you sure you want to log out?")) {
+      logout();
+      setTimeout(function () {
+        $("body").innerHTML = goodbye;
+        setTimeout(async () => {
+          window.location.reload();
+        }, 3000);
+      }, 500);
+    }
   });
 }
