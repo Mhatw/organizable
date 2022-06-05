@@ -4,9 +4,13 @@ import apiFetch from "./api-fetch.js";
 export async function createUser(
   payload = { username, email, first_name, last_name, password }
 ) {
-  const { token, ...user } = await apiFetch("users", { body: payload });
-  sessionStorage.setItem(tokenKey, token);
-  return user;
+  try {
+    const { token, ...user } = await apiFetch("users", { body: payload });
+    sessionStorage.setItem(tokenKey, token);
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function updateUser(
