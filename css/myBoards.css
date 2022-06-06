@@ -82,3 +82,39 @@
 .boardCardFooter span > i {
   transform: scale(0.8);
 }
+
+#board-started-btn {
+  transition: 0.3s cubic-bezier(0, 0.54, 1, 0.54);
+  animation-name: star-breath;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+@keyframes star-breath {
+  0% {
+    color: rgb(255, 194, 12);
+    left: 0px;
+    top: 0px;
+  }
+  50% {
+    color: rgb(245, 147, 0);
+    left: 200px;
+    top: 200px;
+  }
+  100% {
+    color: rgb(255, 194, 12);
+    left: 0px;
+    top: 0px;
+  }
+}
+@keyframes card-breath {
+  0% {
+    /* background-color: transparent; */
+  }
+  50% {
+    background-color: rgb(255, 255, 245);
+  }
+  100% {
+    /* background-color: transparent; */
+  }
+}

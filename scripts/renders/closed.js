@@ -6,7 +6,7 @@ import {
   asideRenderProfile,
   asideRenderMyBoards,
 } from "./aside.js";
-import { renderCard, reOpenBoardBtn } from "./card.js";
+import { destroyBoardBtn, renderCard, reOpenBoardBtn } from "./card.js";
 
 function renderClosedBoards() {
   return `
@@ -91,6 +91,7 @@ export const ClosedPage = {
     listenLogout(),
       asideRenderProfile(),
       asideRenderMyBoards(),
-      reOpenBoardBtn();
+      reOpenBoardBtn(),
+      destroyBoardBtn();
   },
 };
