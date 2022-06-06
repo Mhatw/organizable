@@ -19,3 +19,8 @@
 
   color: #000;
 }
+@media screen and (max-width: 650px) {
+  .editProfile form {
+    padding: 0;
+  }
+}

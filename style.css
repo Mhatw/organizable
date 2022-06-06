@@ -4,6 +4,7 @@
 @import url(./css/aside.css);
 @import url(./css/myBoards.css);
 @import url(./css/profile.css);
+@import url(./css/createModal.css);
 
 body {
   background-color: #fafafa;
