@@ -1,7 +1,19 @@
 import DOMHandler from "../dom-handler.js";
 import STORE from "../store.js";
-import { listenLogout, renderAside, asideRenderProfile } from "./aside.js";
+import {
+  listenLogout,
+  renderAside,
+  asideRenderProfile,
+  asideRenderClosed,
+} from "./aside.js";
 import { renderCard } from "./card.js";
+import {
+  createBoardButton,
+  listenModal,
+  modal,
+  listenColorPicker,
+  createBoardSubmit,
+} from "./create.js";
 
 function renderHome() {
   return `
@@ -22,19 +34,20 @@ function renderHome() {
         </div>
       </section>
     </main>
+    ${modal}
   `;
 }
 const $ = (selector) => document.querySelector(selector);
 
 function renderBoards(type) {
-  if (STORE.favorites.length > 0) {
-    const icon = `Started boards 
+  if (type == "fav" && STORE.favorites.length <= 0) return ``;
+  const icon = `Started boards 
     <span class="icon mx-2" id="hiddenStarted">
       <i class="fas fa-eye ${
         STORE.hiddenStarted ? "" : "fa-eye-slash"
       }" id="hiddenStartedIcon"></i>
     </span>`;
-    return `
+  return `
     <!-- starred -->
       <div class="appBoardsStarted">
         <h3>${type == "fav" ? icon : "Boards"}
@@ -43,13 +56,11 @@ function renderBoards(type) {
         <div class="boardContainer">
 
           <!-- card -->
+          ${type == "fav" ? "" : createBoardButton}
           ${renderCards(type)}          
         </div>
       </div>
     `;
-  } else {
-    return ``;
-  }
 }
 
 function renderCards(type) {
@@ -57,12 +68,12 @@ function renderCards(type) {
   if (type == "fav") {
     if (STORE.hiddenStarted === true) {
       render = STORE.favorites
-        .map((board) => renderCard(board.name, board.id))
+        .map((board) => renderCard(board.name, board.id, board.color))
         .join("");
     }
   } else {
     render = STORE.boards
-      .map((board) => renderCard(board.name, board.id))
+      .map((board) => renderCard(board.name, board.id, board.color))
       .join("");
   }
   return render;
@@ -85,6 +96,12 @@ export const HomePage = {
   },
   addListeners() {
     // listenCreate()
-    listenLogout(), hiddenStartedBoards(), asideRenderProfile();
+    listenLogout(),
+      hiddenStartedBoards(),
+      asideRenderProfile(),
+      asideRenderClosed(),
+      listenModal(),
+      listenColorPicker(),
+      createBoardSubmit();
   },
 };
