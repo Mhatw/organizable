@@ -6,7 +6,12 @@ import {
   asideRenderProfile,
   asideRenderClosed,
 } from "./aside.js";
-import { closedBoardBtn, renderCard } from "./card.js";
+import {
+  closedBoardBtn,
+  renderCard,
+  startedBoardBtn,
+  unStartedBoardBtn,
+} from "./card.js";
 import {
   createBoardButton,
   listenModal,
@@ -68,12 +73,16 @@ function renderCards(type) {
   if (type == "fav") {
     if (STORE.hiddenStarted === true) {
       render = STORE.favorites
-        .map((board) => renderCard(board.name, board.id, board.color))
+        .map((board) =>
+          renderCard(board.name, board.id, board.color, "started", type)
+        )
         .join("");
     }
   } else {
     render = STORE.boards
-      .map((board) => renderCard(board.name, board.id, board.color))
+      .map((board) =>
+        renderCard(board.name, board.id, board.color, "unStarted", type)
+      )
       .join("");
   }
   return render;
@@ -103,6 +112,8 @@ export const HomePage = {
       listenModal(),
       listenColorPicker(),
       createBoardSubmit(),
-      closedBoardBtn();
+      closedBoardBtn(),
+      startedBoardBtn(),
+      unStartedBoardBtn();
   },
 };

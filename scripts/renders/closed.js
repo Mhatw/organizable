@@ -6,7 +6,7 @@ import {
   asideRenderProfile,
   asideRenderMyBoards,
 } from "./aside.js";
-import { renderCard } from "./card.js";
+import { renderCard, reOpenBoardBtn } from "./card.js";
 
 function renderClosedBoards() {
   return `
@@ -54,21 +54,29 @@ function renderBoards(type) {
 }
 
 function renderCards(type) {
+  console.log(type);
   let render = `<hr style="width:80%;background:#bababa;margin-top:-2rem">`;
   if (type == "closed") {
     console.log("this", STORE.closed);
+    console.log(type);
     render = STORE.closed
-      .map((board) => renderCard(board.name, board.id, board.color))
+      .map((board) =>
+        renderCard(board.name, board.id, board.color, "closed2", type)
+      )
       .join("");
   } else if (type == "fav") {
     if (STORE.hiddenStarted === true) {
       render = STORE.favorites
-        .map((board) => renderCard(board.name, board.id, board.color))
+        .map((board) =>
+          renderCard(board.name, board.id, board.color, "started")
+        )
         .join("");
     }
   } else {
     render = STORE.boards
-      .map((board) => renderCard(board.name, board.id, board.color))
+      .map((board) =>
+        renderCard(board.name, board.id, board.color, "unStarted")
+      )
       .join("");
   }
   return render;
@@ -80,6 +88,9 @@ export const ClosedPage = {
   },
   addListeners() {
     // listenCreate()
-    listenLogout(), asideRenderProfile(), asideRenderMyBoards();
+    listenLogout(),
+      asideRenderProfile(),
+      asideRenderMyBoards(),
+      reOpenBoardBtn();
   },
 };
