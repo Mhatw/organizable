@@ -6,7 +6,7 @@ import {
   asideRenderProfile,
   asideRenderClosed,
 } from "./aside.js";
-import { renderCard } from "./card.js";
+import { closedBoardBtn, renderCard } from "./card.js";
 import {
   createBoardButton,
   listenModal,
@@ -102,6 +102,7 @@ export const HomePage = {
       asideRenderClosed(),
       listenModal(),
       listenColorPicker(),
-      createBoardSubmit();
+      createBoardSubmit(),
+      closedBoardBtn();
   },
 };
