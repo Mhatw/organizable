@@ -14,7 +14,7 @@ export function renderAside(selected) {
             <!-- logo -->
             <li class="asideLogo">
               <span class="icon-text">
-                <span class="textLogoAside" is-unselectable></span>
+                <span class="textLogoAside"></span>
               </span>
             </li>
 
