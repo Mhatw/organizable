@@ -1,6 +1,6 @@
-export function renderCard(title, id) {
+export function renderCard(title, id, color) {
   return `
-  <div class="boardCard box" id="card-${id}">
+  <div class="boardCard box" style="background:${color}" id="card-${id}">
     <div class="boardCardHeader">
       <h4>${title}</h4>
     </div>
