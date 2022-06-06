@@ -1,0 +1,185 @@
+/* The Modal (background) */
+.modal {
+  display: hidden;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.modalNoHidden {
+  display: block;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  margin: 15% auto; /* 15% from the top and centered */
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: rgb(255, 255, 255);
+  /* float: right; */
+  font-size: 28px;
+  font-weight: bold;
+  transform: translate(1rem, -3rem);
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.boardCardForm {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-wrap: nowrap;
+  flex-direction: wrap;
+  width: 14rem;
+  height: 7rem;
+  margin: 0 !important;
+  background-color: #9cbced;
+}
+.modal-content > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.modalForm > input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(0, 0, 0, 0.112);
+}
+.modalForm > input::placeholder {
+  color: white;
+}
+.modalForm > input:focus {
+  border: 1px solid rgba(0, 0, 0, 0.459);
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+#createNewCard {
+  /* border: 4px solid #b5adde; */
+  border: 4px solid var(--login-color);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--login-color);
+  transition: 110ms ease-in;
+}
+#createNewCard:hover {
+  background-color: var(--login-color);
+  color: white;
+  transform: scale(1.05);
+}
+#createNewCard:hover > i {
+  animation: pulse 1s linear infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modalPallete {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-left: 2rem;
+}
+.modalPallete > div {
+  padding: 10px;
+  background-color: #ccc;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  transition: 80ms ease-in;
+}
+.modalPallete > div:hover {
+  border: 2px solid black;
+}
+.modalButton {
+  border-radius: 1rem !important;
+  padding: 0.1rem 0.6rem;
+}
+.modalPallete > .mp-1 {
+  background-color: #b5adde;
+}
+.modalPallete > .mp-2 {
+  background-color: #9cbced;
+}
+.modalPallete > .mp-3 {
+  background-color: #b5d6e8;
+}
+.modalPallete > .mp-4 {
+  background-color: #9ee3db;
+}
+.modalPallete > .mp-5 {
+  background-color: #d3e68f;
+}
+.modalPallete > .mp-6 {
+  background-color: #ffb87d;
+}
+.modalPallete > .mp-7 {
+  background-color: #ffa791;
+}
+.modalPallete > .mp-8 {
+  background-color: #ffb0b0;
+}
+.modalPallete > .mp-9 {
+  background-color: #eda1d2;
+}
+
+@media screen and (max-width: 650px) {
+  .modal-content {
+    margin: 10rem auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal-content > div {
+    flex-direction: column;
+    order: 1;
+  }
+  .modalPallete {
+    margin-top: 2rem;
+    margin-left: 0;
+  }
+  .close {
+    color: rgb(255, 255, 255);
+    /* float: right; */
+    font-size: 28px;
+    font-weight: bold;
+    transform: translate(8rem, -1rem);
+    order: 0;
+  }
+}
