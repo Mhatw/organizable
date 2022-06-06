@@ -1,6 +1,7 @@
 import DOMHandler from "../dom-handler.js";
 import { login } from "../services/sessions-service.js";
 import STORE from "../store.js";
+import { toLocalStorage } from "../utils.js";
 import { HomePage } from "./home.js";
 import SignupPage from "./signup.js";
 function renderLogin() {
@@ -69,7 +70,7 @@ function listenSubmitForm() {
       const password = $("input[type=password]").value;
       console.log(username, password);
       const user = await login({ username: username, password: password });
-      STORE.user = user;
+      STORE.setUser(user);
       console.log(user);
       setTimeout(function () {
         // loadingPage();
