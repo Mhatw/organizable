@@ -110,7 +110,7 @@ function listenSubmitForm() {
         last_name: lastName.value,
         password: password.value,
       });
-      STORE.user = user;
+      STORE.setUser(user);
 
       console.log(user);
       setTimeout(function () {

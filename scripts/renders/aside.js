@@ -1,5 +1,6 @@
 import DOMHandler from "../dom-handler.js";
 import { logout } from "../services/sessions-service.js";
+import { ClosedPage } from "./closed.js";
 import { HomePage } from "./home.js";
 import { goodbye } from "./loaders.js";
 import LoginPage from "./login.js";
@@ -13,7 +14,7 @@ export function renderAside(selected) {
             <!-- logo -->
             <li class="asideLogo">
               <span class="icon-text">
-                <span is-unselectable>{ organizable }</span>
+                <span class="textLogoAside" is-unselectable></span>
               </span>
             </li>
 
@@ -23,7 +24,7 @@ export function renderAside(selected) {
                 <span class="icon">
                   <i class="fas fa-solid fa-border-all"></i>
                 </span>
-                <span>My Boards</span>
+                <span class="textAside">My Boards</span>
               </span>
             </li>
 
@@ -35,7 +36,7 @@ export function renderAside(selected) {
                 <span class="icon">
                   <i class="fas fa-solid fa-trash"></i>
                 </span>
-                <span>Closed Boards</span>
+                <span class="textAside">Closed Boards</span>
               </span>
             </li>
 
@@ -47,7 +48,7 @@ export function renderAside(selected) {
                 <span class="icon">
                   <i class="fas fa-solid fa-id-badge"></i>
                 </span>
-                <span>My Profile</span>
+                <span class="textAside">My Profile</span>
               </span>
             </li>
           </div>
@@ -57,7 +58,7 @@ export function renderAside(selected) {
               <span class="icon">
                 <i class="fas fa-solid fa-power-off"></i>
               </span>
-              <span>Log out</span>
+              <span class="textAside">Log out</span>
             </span>
           </li>
         </ul>
@@ -74,6 +75,11 @@ export function asideRenderMyBoards() {
 export function asideRenderProfile() {
   document.querySelector(".asideMyProfile").addEventListener("click", () => {
     DOMHandler.load(ProfilePage);
+  });
+}
+export function asideRenderClosed() {
+  document.querySelector(".asideClosedBoards").addEventListener("click", () => {
+    DOMHandler.load(ClosedPage);
   });
 }
 export function listenLogout() {

@@ -4,59 +4,49 @@ import {
   listenLogout,
   renderAside,
   asideRenderProfile,
-  asideRenderClosed,
+  asideRenderMyBoards,
 } from "./aside.js";
 import { renderCard } from "./card.js";
-import {
-  createBoardButton,
-  listenModal,
-  modal,
-  listenColorPicker,
-  createBoardSubmit,
-} from "./create.js";
 
-function renderHome() {
+function renderClosedBoards() {
   return `
   <main class="mainApp">
       <!-- aside -->
-      ${renderAside()}
+      ${renderAside("closed")}
       
       <!-- right panel -->
       <section class="appBoards">
         <div class="myBoards">
-          <h2>My Boards</h2>
-          <!-- starred -->
-          ${renderBoards("fav")}
+          <h2>Boards</h2>
 
-          <!-- Boards -->
-          ${renderBoards()}
+          ${renderBoards("closed")}
 
         </div>
       </section>
     </main>
-    ${modal}
   `;
 }
 const $ = (selector) => document.querySelector(selector);
 
 function renderBoards(type) {
   if (type == "fav" && STORE.favorites.length <= 0) return ``;
+
   const icon = `Started boards 
     <span class="icon mx-2" id="hiddenStarted">
       <i class="fas fa-eye ${
         STORE.hiddenStarted ? "" : "fa-eye-slash"
       }" id="hiddenStartedIcon"></i>
     </span>`;
+  const mainTitle =
+    type == "fav" ? icon : type == "closed" ? "Closed boards" : "Boards";
   return `
-    <!-- starred -->
+    <!-- ${type} -->
       <div class="appBoardsStarted">
-        <h3>${type == "fav" ? icon : "Boards"}
-        </h3>
+        <h3>${mainTitle}</h3>
 
         <div class="boardContainer">
 
           <!-- card -->
-          ${type == "fav" ? "" : createBoardButton}
           ${renderCards(type)}          
         </div>
       </div>
@@ -65,7 +55,12 @@ function renderBoards(type) {
 
 function renderCards(type) {
   let render = `<hr style="width:80%;background:#bababa;margin-top:-2rem">`;
-  if (type == "fav") {
+  if (type == "closed") {
+    console.log("this", STORE.closed);
+    render = STORE.closed
+      .map((board) => renderCard(board.name, board.id, board.color))
+      .join("");
+  } else if (type == "fav") {
     if (STORE.hiddenStarted === true) {
       render = STORE.favorites
         .map((board) => renderCard(board.name, board.id, board.color))
@@ -78,30 +73,13 @@ function renderCards(type) {
   }
   return render;
 }
-function hiddenStartedBoards() {
-  const listener = $("#hiddenStarted");
-  if (listener) {
-    listener.addEventListener("click", (event) => {
-      const icon = $("#hiddenStartedIcon");
-      STORE.hiddenStarted = !STORE.hiddenStarted;
-      DOMHandler.reload();
-      icon.classList.toggle("fa-eye-slash");
-    });
-  }
-}
 
-export const HomePage = {
+export const ClosedPage = {
   toString() {
-    return renderHome();
+    return renderClosedBoards();
   },
   addListeners() {
     // listenCreate()
-    listenLogout(),
-      hiddenStartedBoards(),
-      asideRenderProfile(),
-      asideRenderClosed(),
-      listenModal(),
-      listenColorPicker(),
-      createBoardSubmit();
+    listenLogout(), asideRenderProfile(), asideRenderMyBoards();
   },
 };

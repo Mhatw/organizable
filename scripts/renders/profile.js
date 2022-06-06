@@ -1,7 +1,12 @@
 import DOMHandler from "../dom-handler.js";
 import { destroyUser, updateUser } from "../services/users-service.js";
 import STORE from "../store.js";
-import { asideRenderMyBoards, listenLogout, renderAside } from "./aside.js";
+import {
+  asideRenderClosed,
+  asideRenderMyBoards,
+  listenLogout,
+  renderAside,
+} from "./aside.js";
 import { HomePage } from "./home.js";
 import { goodbyeDeleteUser, successMsg } from "./loaders.js";
 
@@ -112,7 +117,7 @@ function updateMyProfile() {
         first_name: firstName.value,
         last_name: lastName.value,
       });
-      STORE.user = user;
+      STORE.setUser(user);
       setTimeout(function () {
         // loadingPage();
         successMsg;
@@ -164,7 +169,8 @@ export const ProfilePage = {
       updateMyProfile(),
       deleteMyAccount(),
       asideRenderMyBoards(),
-      loadUserData();
+      loadUserData(),
+      asideRenderClosed();
   },
   state: {
     updateError: null,

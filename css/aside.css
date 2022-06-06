@@ -11,24 +11,13 @@
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr;
   grid-gap: 12px;
-  background: var(--signup-gradient);
+  background: var(--login-gradient);
   background-size: 400% 400%;
   -webkit-animation: AnimationName 6s ease infinite;
   -moz-animation: AnimationName 6s ease infinite;
   animation: AnimationName 6s ease infinite;
 }
-@media screen and (max-width: 1216px) {
-  .mainApp {
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .mainApp {
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr;
-  }
-}
+
 .lateralBar {
   grid-column-start: 1;
   grid-column-end: 2;
@@ -59,6 +48,9 @@
   align-items: center;
   gap: 0.5rem;
 }
+.textLogoAside::after {
+  content: "{ organizable }";
+}
 
 .asideMyBoards,
 .asideClosedBoards,
@@ -70,6 +62,7 @@
   border-radius: 0.3rem;
   cursor: pointer;
 }
+
 .asideMyBoards:hover,
 .asideClosedBoards:hover,
 .asideMyProfile:hover {
@@ -99,6 +92,71 @@
 .asideLogout > span > span > i {
   color: var(--signup-color);
 }
+.asideLogout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.asideLogout > span {
+  margin-right: 15px;
+}
 .asideLogout:hover {
   background-color: #ffe1e1;
+}
+
+@media screen and (max-width: 1216px) {
+  .mainApp {
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .mainApp {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mainApp {
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 1fr;
+  }
+  .textAside {
+    display: none;
+  }
+  .asideMyBoards,
+  .asideClosedBoards,
+  .asideMyProfile,
+  .asideLogout {
+    width: auto;
+  }
+
+  .textLogoAside::after {
+    content: "{ }";
+  }
+  .asideLogout > span {
+    margin-right: 0;
+  }
+  .mainApp {
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 1fr;
+  }
+}
+@media screen and (max-width: 650px) {
+  .mainApp {
+    grid-template-columns: 1.7fr 8fr;
+    grid-template-rows: 1fr;
+  }
+  .boardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .boardCard {
+    width: 100% !important;
+  }
+  .asideLogout {
+    margin-bottom: 2rem;
+  }
 }
