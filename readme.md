@@ -3,8 +3,17 @@
 Keep track of all your projects and task with this revolutionary, never seen
 before, application: `organizable`
 
-![https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/bLuKz6eX/21244435-01f6-4956-bf83-707e145c68e4.png?source=viewer&v=86ff0d7a77d8254f1ac7a62f156399d7](https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/bLuKz6eX/21244435-01f6-4956-bf83-707e145c68e4.png?source=viewer&v=86ff0d7a77d8254f1ac7a62f156399d7)
-
+[try online](https://organizable.vercel.app/)
+<p align="center">
+<img src="./assets/organizable.png"
+     alt="home screenshot"
+     style="margin-right: 10px;width:700px" />
+</p>
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skills.thijs.gg/icons?i=js,html,css,vscode" />
+  </a>
+</p>
 ## Resources
 
 - Design: **[here](https://www.figma.com/file/YrRRF3WO0bgdgY6ZwB8QsO/Organizable-JS?node-id=3602%3A1292)**
